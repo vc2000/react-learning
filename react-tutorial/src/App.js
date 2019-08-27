@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Table from './Table';
+import Form from './Form';
 import './App.css';
 
 class App extends Component {
@@ -75,6 +76,7 @@ class App extends Component {
         </header>
         <div className="container">
           <Table characterData={characters} removeCharacter={this.removeCharacter} />
+          <Form />
         </div>
       </div>
     );
