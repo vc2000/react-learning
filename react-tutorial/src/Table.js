@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 class Table extends Component {
   render() {
+    const { characterData } = this.props
 
     const TableHeader = () => {
       return (
@@ -14,34 +15,23 @@ class Table extends Component {
       )
     }
 
-    const TableBody = () => {
-      return (
-        <tbody>
-          <tr>
-            <td>Charlie</td>
-            <td>Janitor</td>
+    const TableBody = props => {
+      const rows = props.characterData.map((rows, index) => {
+        return (
+          <tr key={index}>
+            <td>{rows.name}</td>
+            <td>{rows.job}</td>
           </tr>
-          <tr>
-            <td>Mac</td>
-            <td>Bouncer</td>
-          </tr>
-          <tr>
-            <td>Dee</td>
-            <td>Aspiring actress</td>
-          </tr>
-          <tr>
-            <td>Dennis</td>
-            <td>Bartender</td>
-          </tr>
-        </tbody>
-      )
+        )
+      })
+      return <tbody>{rows}</tbody>
     }
 
 
     return (
       <table>
-      <TableHeader />
-      <TableBody />
+        <TableHeader />
+        <TableBody characterData={characterData} />
       </table>
     )
   }
