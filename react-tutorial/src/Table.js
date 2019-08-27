@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Table extends Component {
   render() {
-    const { characterData } = this.props
+    const { characterData, removeCharacter } = this.props
 
     const TableHeader = () => {
       return (
@@ -21,6 +21,9 @@ class Table extends Component {
           <tr key={index}>
             <td>{rows.name}</td>
             <td>{rows.job}</td>
+            <td>
+            <button onClick={() => props.removeCharacter(index)}>Delete</button>
+            </td>
           </tr>
         )
       })
@@ -31,7 +34,7 @@ class Table extends Component {
     return (
       <table>
         <TableHeader />
-        <TableBody characterData={characterData} />
+        <TableBody characterData={characterData} removeCharacter={removeCharacter} />
       </table>
     )
   }
