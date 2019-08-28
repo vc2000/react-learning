@@ -53,11 +53,21 @@
       }
 
       class Form extends React.Component {
+
+        constructor(props){
+          super(props)
+
+          this.state ={
+            nameInput:"",
+            ageInput:""
+          }
+        }
+
         render() {
           return (
             <div>
-              <input type="text" placeholder="Input Name" />
-              <input type="text" placeholder="Input Age" />
+              <input type="text" placeholder="Input Name" value={this.state.nameInput}/>
+              <input type="text" placeholder="Input Age" value={this.state.ageInput} />
               <input type="submit" value="Submit" />
             </div>
           )
