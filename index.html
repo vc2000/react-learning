@@ -61,14 +61,32 @@
             nameInput:"",
             ageInput:""
           }
+
+          this.onNameChanged = this.onNameChanged.bind(this) 
+          this.onAgeChanged = this.onAgeChanged.bind(this)
+          this.onSubmit = this.onSubmit.bind(this)
         }
 
+        onNameChanged(event){
+          this.setState({nameInput:event.target.value});
+          console.log(event.target.value);
+        }
+
+        onAgeChanged(event){
+          this.setState({ageInput:event.target.value});
+          console.log(event);
+        }
+
+        onSubmit(event){
+          console.log(this.state);
+        }
+        
         render() {
           return (
             <div>
-              <input type="text" placeholder="Input Name" value={this.state.nameInput}/>
-              <input type="text" placeholder="Input Age" value={this.state.ageInput} />
-              <input type="submit" value="Submit" />
+              <input type="text" placeholder="Input Name" value={this.state.nameInput} onChange={this.onNameChanged}/>
+              <input type="text" placeholder="Input Age" value={this.state.ageInput} onChange={this.onAgeChanged}/>
+              <button onClick={this.onSubmit}>Submit</button>
             </div>
           )
         }
