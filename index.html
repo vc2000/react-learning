@@ -24,7 +24,14 @@
             name: "Mark",
             age : "18"
           }
+
+          this.onFormChanged = this.onFormChanged.bind(this)
         }
+
+        onFormChanged(name,age){
+            this.setState({name:name,age:age})
+          }
+
         render() {
 
           setTimeout( () => {this.setState({name:"Jame",age:20})},3000);
@@ -34,7 +41,8 @@
             <Person name={this.state.name} age={this.state.age}/>
             <Person name="Francis" age={30}/>
             <Person name="German" age={25}/>
-            <Form />
+            <Form onFormChanged={this.onFormChanged}/>
+            
             </div>
           )
         }
@@ -78,6 +86,7 @@
         }
 
         onSubmit(event){
+          this.props.onFormChanged(this.state.nameInput, this.state.ageInput)
           console.log(this.state);
         }
         
